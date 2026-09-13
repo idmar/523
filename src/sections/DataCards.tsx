@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
@@ -9,21 +9,70 @@ const cards = [
     label: '教育定位',
     value: '唯一',
     suffix: '',
+    isNumeric: false,
     desc: '香港唯一的公立博雅大学，以学生为本，提供与众不同的教育模式',
   },
   {
     label: '学科排名',
     value: '2',
     suffix: 'nd',
+    isNumeric: true,
     desc: '社会政策与行政管理位列香港第 2，亚洲第 9（2024 QS）',
   },
   {
     label: '全球视野',
     value: '85',
     suffix: '%',
+    isNumeric: true,
     desc: '超过 85% 的本科生在学期间有机会到海外交流',
   },
 ];
+
+function AnimatedNumber({ value, isNumeric }: { value: string; isNumeric: boolean }) {
+  const [current, setCurrent] = useState(isNumeric ? 0 : value);
+  const ref = useRef<HTMLSpanElement>(null);
+
+  useEffect(() => {
+    if (!isNumeric) return;
+    const target = parseInt(value, 10);
+    const el = ref.current;
+    if (!el) return;
+
+    const proxy = { val: 0 };
+    const tween = gsap.to(proxy, {
+      val: target,
+      duration: 1.8,
+      delay: 0.2,
+      ease: 'power3.out',
+      scrollTrigger: {
+        trigger: el,
+        start: 'top 85%',
+        toggleActions: 'play none none none',
+      },
+      onUpdate: () => {
+        setCurrent(Math.round(proxy.val));
+      },
+    });
+
+    return () => {
+      tween.kill();
+    };
+  }, [value, isNumeric]);
+
+  return (
+    <span
+      ref={ref}
+      className="font-data text-5xl md:text-6xl font-medium tabular-nums"
+      style={{
+        background: 'linear-gradient(135deg, #C05621, #DD6B20)',
+        WebkitBackgroundClip: 'text',
+        WebkitTextFillColor: 'transparent',
+      }}
+    >
+      {isNumeric ? current : value}
+    </span>
+  );
+}
 
 export default function DataCards() {
   const sectionRef = useRef<HTMLDivElement>(null);
@@ -79,21 +128,12 @@ export default function DataCards() {
                 }}
               />
 
-              <span className="text-xs tracking-wider text-[#CBD5E1]/60 uppercase mb-4 block">
+              <span className="text-xs tracking-wider text-[#94A3B8] font-medium uppercase mb-4 block">
                 {card.label}
               </span>
 
               <div className="flex items-baseline gap-1 mb-4">
-                <span
-                  className="font-data text-5xl md:text-6xl font-medium"
-                  style={{
-                    background: 'linear-gradient(135deg, #C05621, #DD6B20)',
-                    WebkitBackgroundClip: 'text',
-                    WebkitTextFillColor: 'transparent',
-                  }}
-                >
-                  {card.value}
-                </span>
+                <AnimatedNumber value={card.value} isNumeric={card.isNumeric} />
                 {card.suffix && (
                   <span className="font-data text-2xl text-[#C05621]">{card.suffix}</span>
                 )}

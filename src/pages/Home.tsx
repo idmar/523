@@ -6,6 +6,7 @@ import Teaching from '../sections/Teaching';
 import StudentWorks from '../sections/StudentWorks';
 import Partners from '../sections/Partners';
 import Footer from '../sections/Footer';
+import BackToTop from '../components/BackToTop';
 
 export default function Home() {
   return (
@@ -20,6 +21,7 @@ export default function Home() {
         <Partners />
       </main>
       <Footer />
+      <BackToTop />
     </div>
   );
 }

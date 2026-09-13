@@ -2,6 +2,7 @@ import { useEffect, useRef } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { useScrollReveal } from '../hooks/useScrollReveal';
+import ImageWithSkeleton from '../components/ImageWithSkeleton';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -87,11 +88,11 @@ function ImageCard({
             'radial-gradient(54.01% 74.44% at 50% 105.71%, rgba(37, 99, 235, 0.12) 0%, transparent 100%)',
         }}
       />
-      <img
+      <ImageWithSkeleton
         src={src}
         alt={alt}
-        className={`w-full h-full object-cover transition-transform duration-700 group-hover:scale-105 ${aspect}`}
-        loading="lazy"
+        aspect={aspect}
+        className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
       />
     </div>
   );
@@ -159,7 +160,7 @@ export default function Partners() {
           </Reveal>
 
           <Reveal animation="slideInRight" delay={0.15} className="md:col-span-7 order-1 md:order-2">
-            <ImageCard src="/images/image40.webp" alt="清华大学美术学院" aspect="aspect-[16/10]" />
+            <ImageCard src="./images/image40.webp" alt="清华大学美术学院" aspect="aspect-[16/10]" />
           </Reveal>
         </div>
 
@@ -169,8 +170,8 @@ export default function Partners() {
         <div className="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-12 items-center mb-24 md:mb-36">
           <Reveal animation="slideInLeft" className="md:col-span-7">
             <div className="grid grid-cols-2 gap-3 md:gap-4">
-              <ImageCard src="/images/image34.webp" alt="联合国会议合影" aspect="aspect-[4/3]" />
-              <ImageCard src="/images/image35.webp" alt="联合国总部艺术展" aspect="aspect-[4/3]" />
+              <ImageCard src="./images/image34.webp" alt="联合国会议合影" aspect="aspect-[4/3]" />
+              <ImageCard src="./images/image35.webp" alt="联合国总部艺术展" aspect="aspect-[4/3]" />
             </div>
           </Reveal>
 
@@ -212,7 +213,7 @@ export default function Partners() {
               <h3 className="font-display text-2xl md:text-3xl lg:text-4xl text-white leading-tight">
                 中欧文化遗产论坛
               </h3>
-              <p className="text-sm text-[#CBD5E1]/60">维也纳 · 国际学术会议</p>
+              <p className="text-sm text-[#94A3B8] font-medium">维也纳 · 国际学术会议</p>
               <div className="space-y-4 text-[#CBD5E1] leading-relaxed">
                 <p>
                   研究中心助理教授<strong className="text-white">马立军</strong>联席主持文化遗产与新技术国际学术会议 Session：
@@ -232,8 +233,8 @@ export default function Partners() {
 
           <Reveal animation="slideInRight" delay={0.15} className="md:col-span-7 order-1 md:order-2">
             <div className="grid grid-cols-2 gap-3 md:gap-4">
-              <ImageCard src="/images/image36.webp" alt="维也纳论坛会议现场" aspect="aspect-[4/3]" />
-              <ImageCard src="/images/image37.webp" alt="维也纳论坛合影" aspect="aspect-[4/3]" />
+              <ImageCard src="./images/image36.webp" alt="维也纳论坛会议现场" aspect="aspect-[4/3]" />
+              <ImageCard src="./images/image37.webp" alt="维也纳论坛合影" aspect="aspect-[4/3]" />
             </div>
           </Reveal>
         </div>
@@ -245,11 +246,11 @@ export default function Partners() {
           <Reveal animation="slideInLeft" className="md:col-span-7">
             <div className="grid grid-cols-2 gap-3 md:gap-4">
               <ImageCard
-                src="/images/image38.webp"
+                src="./images/image38.webp"
                 alt="Still Becoming 展览海报"
                 aspect="aspect-[3/4]"
               />
-              <ImageCard src="/images/image39.webp" alt="展览现场" aspect="aspect-[3/4]" />
+              <ImageCard src="./images/image39.webp" alt="展览现场" aspect="aspect-[3/4]" />
             </div>
           </Reveal>
 
@@ -264,7 +265,7 @@ export default function Partners() {
                   人类仍在生成
                 </span>
               </h3>
-              <p className="text-sm text-[#CBD5E1]/60">
+              <p className="text-sm text-[#94A3B8] font-medium">
                 香港屯门大会堂 · 展览厅 · 2026.4.1-4.5
               </p>
               <div className="space-y-4 text-[#CBD5E1] leading-relaxed">
@@ -311,20 +312,20 @@ export default function Partners() {
               <div className="md:col-span-7">
                 <div className="grid grid-cols-2 gap-3 md:gap-4">
                   {[
-                    { src: '/images/image41.webp', alt: '联合国会议场景一' },
-                    { src: '/images/image42.webp', alt: '联合国会议场景二' },
-                    { src: '/images/image43.webp', alt: '联合国会议场景三' },
-                    { src: '/images/image44.webp', alt: '联合国会议场景四' },
+                    { src: './images/image41.webp', alt: '联合国会议场景一' },
+                    { src: './images/image42.webp', alt: '联合国会议场景二' },
+                    { src: './images/image43.webp', alt: '联合国会议场景三' },
+                    { src: './images/image44.webp', alt: '联合国会议场景四' },
                   ].map(img => (
                     <div
                       key={img.src}
-                      className="relative aspect-square rounded-xl overflow-hidden border border-white/[0.06] group"
+                      className="relative aspect-square rounded-xl overflow-hidden border border-white/[0.08] group"
                     >
-                      <img
+                      <ImageWithSkeleton
                         src={img.src}
                         alt={img.alt}
+                        aspect="aspect-square"
                         className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
-                        loading="lazy"
                       />
                     </div>
                   ))}
@@ -365,7 +366,7 @@ export default function Partners() {
 
           <Reveal animation="slideInRight" delay={0.15} className="md:col-span-7 order-1 md:order-2">
             <ImageCard
-              src="/images/image45.webp"
+              src="./images/image45.webp"
               alt="AI创意大赛获奖证书"
               aspect="aspect-[16/10]"
             />

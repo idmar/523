@@ -1,6 +1,7 @@
 import { useEffect, useRef } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import ImageWithSkeleton from '../components/ImageWithSkeleton';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -104,10 +105,11 @@ export default function Teaching() {
               background: 'radial-gradient(54.01% 74.44% at 50% 100%, rgba(37, 99, 235, 0.12) 0%, transparent 100%)',
             }}
           />
-          <img
-            src="/images/image20.webp"
+          <ImageWithSkeleton
+            src="./images/image20.webp"
             alt="课程现场照片"
-            className="w-full h-auto object-cover rounded-2xl md:rounded-3xl"
+            aspect="aspect-[16/9]"
+            className="w-full h-full object-cover rounded-2xl md:rounded-3xl"
           />
         </div>
 
@@ -120,8 +122,8 @@ export default function Teaching() {
               className="p-5 md:p-6 lg:p-8 rounded-2xl border border-white/[0.06] bg-[#0F172A]/50 hover:bg-[#0F172A] hover:border-white/[0.12] transition-all duration-500 group"
             >
               <div className="flex items-start gap-4">
-                <div className="flex-shrink-0 w-8 h-8 rounded-full bg-[#2563EB]/20 flex items-center justify-center mt-0.5">
-                  <span className="text-[#2563EB] text-sm font-data font-medium">{i + 1}</span>
+                <div className="flex-shrink-0 w-8 h-8 rounded-full bg-[#2563EB]/20 group-hover:bg-[#2563EB] group-hover:shadow-[0_0_15px_rgba(37,99,235,0.6)] flex items-center justify-center mt-0.5 transition-all duration-300">
+                  <span className="text-[#2563EB] group-hover:text-white text-sm font-data font-medium transition-colors duration-300">{i + 1}</span>
                 </div>
                 <div>
                   <h3 className="text-lg font-medium text-white mb-2 group-hover:text-[#60A5FA] transition-colors duration-300">
@@ -136,12 +138,25 @@ export default function Teaching() {
           ))}
         </div>
 
-        {/* Teaching goal */}
-        <div className="mt-12 md:mt-16 p-8 rounded-2xl border border-[#2563EB]/20 bg-gradient-to-br from-[#0F172A] to-[#1E3A5F]/20">
-          <p className="text-center text-[#CBD5E1] leading-relaxed">
+        {/* Teaching goal & CTA */}
+        <div className="mt-12 md:mt-16 p-8 rounded-2xl border border-[#2563EB]/20 bg-gradient-to-br from-[#0F172A] to-[#1E3A5F]/20 flex flex-col md:flex-row items-center justify-between gap-6">
+          <p className="text-center md:text-left text-[#CBD5E1] leading-relaxed">
             <span className="text-white font-medium">培养目标：</span>
             具有商业化战略思考、支持艺术与科技产业发展、具备创新能力的专业化人才
           </p>
+          <a
+            href="https://www.ln.edu.hk/fb/hkibs/rwcatb"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="relative group flex-shrink-0 inline-flex items-center gap-2.5 px-7 py-3.5 text-sm font-medium text-white rounded-full bg-gradient-to-r from-[#2563EB] via-[#1D4ED8] to-[#2563EB] hover:brightness-110 transition-all duration-300 shadow-[0_0_25px_rgba(37,99,235,0.4)] hover:shadow-[0_0_35px_rgba(56,189,248,0.6)] hover:-translate-y-0.5 overflow-hidden"
+          >
+            {/* Shimmer light sweep */}
+            <span className="absolute inset-0 w-full h-full bg-gradient-to-r from-transparent via-white/25 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000 ease-out pointer-events-none" />
+            <span>了解 MScATB 课程详情</span>
+            <svg className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+            </svg>
+          </a>
         </div>
       </div>
     </section>
