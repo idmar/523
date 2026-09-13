@@ -46,7 +46,7 @@ export default function Hero() {
       <VictoriaHarbourScene />
 
       {/* Cyberpunk HUD Frame & Telemetry */}
-      <div className="absolute inset-4 md:inset-8 z-10 pointer-events-none">
+      <div className="absolute inset-x-4 md:inset-x-8 top-20 md:top-24 bottom-4 md:bottom-8 z-10 pointer-events-none">
         {/* Corner brackets */}
         <div className="absolute top-0 left-0 w-4 h-4 border-t-2 border-l-2 border-[#00ffff]/60" />
         <div className="absolute top-0 right-0 w-4 h-4 border-t-2 border-r-2 border-[#00ffff]/60" />

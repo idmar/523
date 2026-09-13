@@ -88,11 +88,11 @@ export default function Header() {
         className="flex items-center gap-2.5 md:gap-3 z-10 group"
         aria-label="返回首页"
       >
-        <div className="w-8 h-8 md:w-9 md:h-9 rounded-xl bg-gradient-to-br from-[#C05621] via-[#1E3A8A] to-[#2563EB] p-[1.5px] shadow-[0_0_15px_rgba(37,99,235,0.35)] group-hover:shadow-[0_0_20px_rgba(0,255,255,0.5)] transition-all duration-300">
-          <div className="w-full h-full bg-[#030712] rounded-[9.5px] flex items-center justify-center font-serif text-sm font-bold text-white group-hover:scale-105 transition-transform">
-            嶺
-          </div>
-        </div>
+        <img
+          src="./favicon.svg"
+          alt="岭南大学徽标"
+          className="w-8 h-8 md:w-9 md:h-9 object-contain rounded-xl shadow-[0_0_15px_rgba(37,99,235,0.35)] group-hover:shadow-[0_0_20px_rgba(0,255,255,0.5)] group-hover:scale-105 transition-all duration-300"
+        />
         <div className="flex flex-col">
           <span className="text-sm md:text-base font-semibold tracking-wider text-white leading-tight font-display group-hover:text-[#60A5FA] transition-colors">
             嶺南大學商學院
